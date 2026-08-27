@@ -10,7 +10,7 @@
   "icons": [
     {
       "src": "./Logo%20Tebaev%20RdB.jpg",
-      "sizes": "192x192",
+      "sizes": "any",
       "type": "image/jpeg"
     }
   ]
