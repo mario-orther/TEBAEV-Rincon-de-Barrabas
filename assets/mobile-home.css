@@ -14,3 +14,59 @@
  section.content{padding:24px 0 32px!important}.head h2{font-size:23px!important;line-height:1.08!important;letter-spacing:-.5px}.head p{font-size:11.5px!important;line-height:1.45}.kicker{font-size:7.8px!important;letter-spacing:1.45px!important;color:#b4843c!important}.panel,.academicIntro,.card,.contactCard{border-radius:17px!important;border-color:#e9dfd8!important;box-shadow:0 7px 21px rgba(62,12,34,.045)}.panel{padding:17px!important}.panel h3{font-size:19px!important;line-height:1.2}.panel p,.academicIntro p,.card p,.map p{font-size:12.3px!important;line-height:1.52}.quote{border-radius:0 10px 10px 0!important;background:#fff!important;font-size:11.5px!important;padding:12px 13px!important}.data{border-radius:17px!important;box-shadow:0 7px 21px rgba(62,12,34,.045)}.data div{padding:12px 13px!important}.data small{font-size:8.1px!important}.data strong{font-size:11.3px!important}.cards{gap:8px!important}.card{padding:16px!important;box-shadow:0 6px 18px rgba(62,12,34,.05)!important}.card h3{font-size:16px!important;line-height:1.2}.link{font-size:9.8px!important}.source{font-size:8.1px!important}.official{margin-top:17px!important;padding-top:17px!important}.official h3{font-size:18px!important}.official p{font-size:11px!important}.officialGrid{gap:8px!important}.official a{padding:12px!important;border-radius:11px!important;font-size:10px!important}.official a span{font-size:8.4px!important}.studentGrid{gap:8px!important}.studentCard{padding:14px!important;border-radius:13px!important}.studentCard strong{font-size:12px!important}.studentCard span,.studentCard a{font-size:9px!important}.galleryPreview,.map{padding:17px!important;border-radius:16px!important}.galleryPreview h3,.map h3{font-size:19px!important}.contact{gap:9px!important}.contactCard{padding:17px!important}.row{padding:9px 0!important}.row small{font-size:8.1px!important}.row strong{font-size:11.4px!important}footer{padding:21px 0!important}.foot strong{font-size:12px!important}.foot small{font-size:8px!important}.foot a{font-size:9px!important;padding:8px 10px!important}
 }
 @media(max-width:370px){.brand strong{font-size:12.5px!important}.brand small{font-size:7.2px!important}.heroMark{min-height:124px!important;flex-basis:124px!important}.heroMark img{width:89px!important}.copy h1{font-size:33px!important}.copy p{font-size:11.3px!important}.quickCard{height:94px!important}.quickCard b{font-size:11.5px!important}.quickCard p{font-size:8.8px!important}}
+
+/* Refinamiento final móvil · espaciado, legibilidad y equilibrio entre secciones */
+@media (max-width:600px){
+ .head h2{font-size:25px!important;line-height:1.08!important}
+ .head p{font-size:12.5px!important;line-height:1.5!important}
+ .content{padding-top:34px!important;padding-bottom:26px!important}
+ .institution{gap:12px!important;margin-top:18px!important}
+ .institution .panel{padding:20px!important}
+ .institution .panel h3{font-size:20px!important}
+ .institution .panel p{font-size:12.8px!important;line-height:1.5!important}
+ .institution .quote{font-size:11.8px!important;padding:12px 13px!important}
+ .data div{padding:13px 14px!important}
+ .data small{font-size:8.4px!important;letter-spacing:.25px}
+ .data strong{font-size:12px!important;line-height:1.35!important}
+ .academicIntro{padding:19px!important}
+ .academicIntro p{font-size:12.8px!important;line-height:1.52!important}
+ .cards{gap:10px!important;margin-top:14px!important}
+ .card{padding:17px!important;min-height:0!important}
+ .card h3{font-size:17px!important}
+ .card p{font-size:12.2px!important;line-height:1.48!important}
+ .link{font-size:10.2px!important;margin-top:11px!important}
+ .source{font-size:8.4px!important}
+ .official{margin-top:17px!important;padding-top:17px!important}
+ .official h3{font-size:19px!important}
+ .official p{font-size:11.5px!important;line-height:1.45!important}
+ .official a{padding:13px!important;font-size:10.5px!important}
+ .students{padding-top:0!important;padding-bottom:26px!important}
+ .students .head h2{font-size:26px!important}
+ .studentGrid{gap:9px!important;margin-top:17px!important}
+ .studentCard{padding:15px!important;min-height:0!important;background:rgba(255,255,255,.045)!important;border-color:rgba(255,255,255,.18)!important}
+ .studentCard strong{font-size:13px!important;line-height:1.2!important}
+ .studentCard span{font-size:10px!important;line-height:1.35!important}
+ .studentCard a{font-size:10px!important}
+ .galleryPreview{padding:19px!important}
+ .galleryPreview h3{font-size:20px!important;line-height:1.18!important}
+ .galleryPreview p{font-size:12.3px!important;line-height:1.5!important}
+ .contact{gap:10px!important}
+ .contactCard{padding:18px!important}
+ .row{padding:10px 0!important}
+ .row small{font-size:8.3px!important}
+ .row strong{font-size:11.8px!important;line-height:1.35!important}
+ /* Reduce large blank transitions without changing content order */
+ section.content + section.content{padding-top:28px!important}
+}
+@media(max-width:370px){
+ .head h2{font-size:23px!important}
+ .head p{font-size:11.8px!important}
+ .content{padding-top:30px!important}
+ .institution .panel{padding:18px!important}
+ .institution .panel h3{font-size:19px!important}
+ .institution .panel p,.academicIntro p{font-size:12.2px!important}
+ .data strong{font-size:11.5px!important}
+ .card h3{font-size:16px!important}
+ .card p{font-size:11.7px!important}
+ .students .head h2{font-size:24px!important}
+}
