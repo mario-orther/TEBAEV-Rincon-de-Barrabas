@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mario-orther.github.io/TEBAEV-Rincon-de-Barrabas/sitemap.xml
