@@ -32,6 +32,38 @@ jobs:
           mkdir -p _site
           rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
 
+      - name: Optimize gallery images
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq webp
+          if [ -d "_site/Fotos" ]; then
+            find "_site/Fotos" -type f \( -iname '*.jpg' -o -iname '*.jpeg' \) -print0 | while IFS= read -r -d '' file; do
+              cwebp -quiet -q 78 -resize 1280 0 "$file" -o "${file%.*}.webp"
+            done
+            python3 - <<'PY'
+          from pathlib import Path
+          from urllib.parse import quote
+
+          root = Path("_site")
+          originals = []
+          for p in (root / "Fotos").iterdir():
+              if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg"}:
+                  originals.append(p)
+
+          for html in root.glob("*.html"):
+              text = html.read_text(encoding="utf-8")
+              for original in originals:
+                  webp = original.with_suffix(".webp")
+                  old = "./Fotos/" + quote(original.name)
+                  new = "./Fotos/" + quote(webp.name)
+                  text = text.replace(old, new)
+              html.write_text(text, encoding="utf-8")
+
+          for original in originals:
+              original.unlink()
+          PY
+          fi
+
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
