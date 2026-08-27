@@ -12,9 +12,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="./Logo%20Tebaev%20RdB.jpg">
 <link rel="manifest" href="./manifest.json">
-<link rel="stylesheet" href="./assets/site.css?v=20260827">
-<link rel="stylesheet" href="./assets/home.css?v=20260827">
-<link rel="stylesheet" href="./assets/mobile-home.css?v=20260827">
+<link rel="stylesheet" href="./assets/site.css?v=20260827-2">
+<link rel="stylesheet" href="./assets/home.css?v=20260827-2">
+<link rel="stylesheet" href="./assets/mobile-home.css?v=20260827-2">
 <title>TEBAEV Rincón de Barrabás | Portal institucional</title>
 </head>
 <body>
@@ -30,5 +30,5 @@
 <section class="content" id="contacto"><div class="wrap"><div class="head"><span class="kicker">Contacto</span><h2>Estamos en Rincón de Barrabás</h2><p>Información institucional para nuestra comunidad.</p></div><div class="contact"><div class="contactCard"><div class="row"><small>Plantel</small><strong>Telebachillerato Rincón de Barrabás</strong></div><div class="row"><small>CCT</small><strong>30ETH1095G</strong></div><div class="row"><small>Ubicación</small><strong>Rincón de Barrabás, Camarón de Tejeda, Veracruz</strong></div><div class="row"><small>Red social</small><strong><a href="https://www.facebook.com/profile.php?id=100013613138056" target="_blank" rel="noopener">Facebook del plantel →</a></strong></div></div><div class="map"><h3>📍 Ubicación del plantel</h3><p>Consulta la ubicación en Google Maps.</p><a class="btn gold" href="https://www.google.com/maps/search/?api=1&query=Telebachillerato%20Rincon%20de%20Barrabas%20Camar%C3%B3n%20de%20Tejeda%20Veracruz" target="_blank" rel="noopener">Abrir ubicación</a></div></div></div></section>
 </main>
 <footer><div class="wrap foot"><div><strong>TEBAEV Rincón de Barrabás</strong><small>CCT 30ETH1095G · Ciclo escolar 2026-2027</small></div><a href="#inicio">Volver al inicio ↑</a></div></footer>
-<script>const h=document.getElementById('hamb'),m=document.getElementById('menu'),d=document.getElementById('institutionDrop'),db=d.querySelector('.dropbtn');h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.setAttribute('aria-expanded',o)});db.addEventListener('click',()=>{const o=d.classList.toggle('open');db.setAttribute('aria-expanded',o)});document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');d.classList.remove('open');h.setAttribute('aria-expanded','false');db.setAttribute('aria-expanded','false')}));</script>
+<script>const h=document.getElementById('hamb'),m=document.getElementById('menu'),d=document.getElementById('institutionDrop'),db=d.querySelector('.dropbtn');h.addEventListener('click',()=>{const o=m.classList.toggle('open');h.setAttribute('aria-expanded',o)});db.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const o=d.classList.toggle('open');db.setAttribute('aria-expanded',o)});document.addEventListener('click',e=>{if(!d.contains(e.target)){d.classList.remove('open');db.setAttribute('aria-expanded','false')}});document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('open');d.classList.remove('open');h.setAttribute('aria-expanded','false');db.setAttribute('aria-expanded','false')}));</script>
 </body></html>
