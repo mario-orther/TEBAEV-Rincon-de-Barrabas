@@ -1,0 +1,17 @@
+{
+  "name": "TEBAEV Rincón de Barrabás",
+  "short_name": "TEBAEV R. Barrabás",
+  "description": "Portal institucional del Telebachillerato Rincón de Barrabás.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#741238",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "./Logo%20Tebaev%20RdB.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
