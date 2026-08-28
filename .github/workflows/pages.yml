@@ -54,8 +54,10 @@ jobs:
               text = html.read_text(encoding="utf-8")
               for original in originals:
                   webp = original.with_suffix(".webp")
-                  old = "./Fotos/" + quote(original.name)
-                  new = "./Fotos/" + quote(webp.name)
+                  # Keep parentheses unescaped because the site's existing
+                  # image references use literal parentheses in filenames.
+                  old = "./Fotos/" + quote(original.name, safe="()")
+                  new = "./Fotos/" + quote(webp.name, safe="()")
                   text = text.replace(old, new)
               html.write_text(text, encoding="utf-8")
 
