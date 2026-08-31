@@ -32,6 +32,13 @@ jobs:
           mkdir -p _site
           rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
 
+      - name: Cache historical photo locally
+        run: |
+          mkdir -p _site/Fotos
+          curl -L --fail --retry 3 --connect-timeout 10 \
+            'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC19KeL7LT3vCdqqDh3_gHEhAA1-GLcFp8vyJaQiFbzP-EgtSiYr6mKB3tbV-sLy14ixTMC2zsCuT_FRNgbhmB_0cwk9Iouxb9Jwvazjcfpxd5Drcitq-I-Uw69ZTzYFaJUKMdphyy5Tzd/s320/14502967_110866732710431_1622245148731686711_n.jpg' \
+            -o '_site/Fotos/Historia-Presidente-Municipal.jpg'
+
       - name: Optimize gallery images
         run: |
           sudo apt-get update -qq
@@ -54,8 +61,6 @@ jobs:
               text = html.read_text(encoding="utf-8")
               for original in originals:
                   webp = original.with_suffix(".webp")
-                  # Keep parentheses unescaped because the site's existing
-                  # image references use literal parentheses in filenames.
                   old = "./Fotos/" + quote(original.name, safe="()")
                   new = "./Fotos/" + quote(webp.name, safe="()")
                   text = text.replace(old, new)
