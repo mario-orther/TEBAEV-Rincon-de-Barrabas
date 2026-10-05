@@ -142,14 +142,14 @@ function sendResult(){
  const name=document.getElementById('studentName').value.trim(),group=document.getElementById('studentGroup').value.trim();
  const score=Math.max(0,100-(errors*5)-(hints*3));
  const url='https://docs.google.com/forms/d/e/1FAIpQLSdgmHXCTjRgWCTnxmLgVIkXNhdl--kZ5do4KoiUcARNP8htWA/viewform?usp=pp_url'
-  +'&entry.00ca789e='+encodeURIComponent(name)
-  +'&entry.3d984452='+encodeURIComponent(group)
-  +'&entry.2e8be5b5='+encodeURIComponent(score)
-  +'&entry.63df1c45='+encodeURIComponent(solved+'/3')
-  +'&entry.46ac0e2e='+encodeURIComponent(errors)
-  +'&entry.4b1ba0f9='+encodeURIComponent(hints)
-  +'&entry.6e9df6d0='+encodeURIComponent(elapsed)
-  +'&entry.0c8f0e86='+encodeURIComponent('254');
+  +'&entry.13269150='+encodeURIComponent(name)
+  +'&entry.1033389138='+encodeURIComponent(group)
+  +'&entry.780920245='+encodeURIComponent(score)
+  +'&entry.1675566149='+encodeURIComponent(solved+'/3')
+  +'&entry.1185680942='+encodeURIComponent(errors)
+  +'&entry.1260101881='+encodeURIComponent(hints)
+  +'&entry.1855846096='+encodeURIComponent(elapsed)
+  +'&entry.210701958='+encodeURIComponent('254');
  resultSent=true;
  window.open(url,'_blank');
 }
