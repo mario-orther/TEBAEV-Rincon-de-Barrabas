@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Expedición Matemática | El Secreto del Tiempo</title>
+<style>
+:root{--vino:#801835;--oro:#d1ae54;--fondo:#f5f1e8;--texto:#252525;--verde:#2e7d32}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#f5f1e8,#fff);color:var(--texto)}
+header{background:linear-gradient(135deg,var(--vino),#571024);color:#fff;padding:28px 18px;text-align:center}
+header .tag{color:var(--oro);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem}
+header h1{margin:8px 0 4px;font-size:clamp(1.8rem,5vw,3rem)}header p{margin:0;opacity:.9}
+.wrap{max-width:920px;margin:auto;padding:22px 16px 50px}.card{background:#fff;border-radius:22px;padding:24px;margin:18px 0;box-shadow:0 10px 30px #00000012;border:1px solid #eadfc9}
+.progress{height:12px;background:#eadfc9;border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--vino),var(--oro));transition:.35s}
+.meta{display:flex;justify-content:space-between;gap:12px;margin:10px 0;color:#666;font-size:.9rem}
+.symbols{font-size:2.2rem;text-align:center;letter-spacing:.18em;background:#faf7ef;padding:18px;border-radius:15px;margin:18px 0}
+input{width:100%;padding:14px;border:2px solid #ddd;border-radius:12px;font-size:1.1rem}
+button{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer;background:var(--vino);color:#fff;margin-top:10px}button:hover{filter:brightness(1.08)}button.secondary{background:#eee;color:#333}
+.feedback{margin-top:14px;padding:13px;border-radius:12px;display:none}.ok{background:#e8f5e9;color:#205d23}.bad{background:#ffebee;color:#8a1c2a}
+.hidden{display:none}.hint{color:#6a5a25;background:#fff8d9;padding:12px;border-radius:12px;margin-top:12px}
+footer{text-align:center;color:#777;font-size:.85rem;margin-top:24px}
+ul{line-height:1.8}
+</style>
+</head>
+<body>
+<header><div class="tag">TEBAEV · Pensamiento Matemático I</div><h1>🧭 Expedición Matemática</h1><p>El Secreto del Tiempo</p></header>
+<div class="wrap">
+<div class="card"><div class="meta"><span>Progreso de la expedición</span><strong id="counter">0 / 3</strong></div><div class="progress"><div class="bar" id="bar"></div></div></div>
+<section class="card" id="intro">
+<h2>Bienvenido, explorador</h2>
+<p>Has encontrado un antiguo mecanismo que solo puede abrirse resolviendo tres códigos matemáticos. Viajarás por Babilonia, Egipto y el mundo Maya.</p>
+<ul><li>Lee con atención cada representación.</li><li>Escribe el resultado numérico.</li><li>Si te equivocas, recibirás una pista para aprender del error.</li></ul>
+<button onclick="start()">Comenzar expedición 🚀</button>
+</section>
+<section class="card hidden" id="ch1">
+<h2>🏺 Cámara I · Babilonia</h2><p>Los símbolos representan decenas y unidades:</p>
+<div class="symbols">&lt; &lt; &lt; &lt; &nbsp; T T</div>
+<p><strong>Clave:</strong> cada &lt; vale 10 y cada T vale 1.</p>
+<input id="a1" inputmode="numeric" placeholder="¿Cuál es el número?">
+<button onclick="check(1,42)">Descifrar</button><button class="secondary" onclick="hint(1)">Pista</button>
+<div id="f1" class="feedback"></div><div id="h1" class="hint hidden">Piensa: 4 grupos de 10 + 2 unidades.</div>
+</section>
+<section class="card hidden" id="ch2">
+<h2>𓂀 Cámara II · Egipto</h2><p>Descifra los jeroglíficos con estos valores:</p>
+<div class="symbols">𓆼𓆼𓆼 &nbsp; 𓍢𓍢 &nbsp; 𓏤𓏤𓏤𓏤𓏤</div>
+<p><strong>Clave:</strong> 𓆼 = 1000 · 𓍢 = 100 · 𓏤 = 1</p>
+<input id="a2" inputmode="numeric" placeholder="¿Cuál es el número?">
+<button onclick="check(2,3205)">Descifrar</button><button class="secondary" onclick="hint(2)">Pista</button>
+<div id="f2" class="feedback"></div><div id="h2" class="hint hidden">Suma 3 miles + 2 centenas + 5 unidades.</div>
+</section>
+<section class="card hidden" id="ch3">
+<h2>🌽 Cámara III · Maya</h2><p>En el sistema maya, un punto vale 1 y una barra vale 5.</p>
+<div class="symbols">• • • • &nbsp; ━ ━</div>
+<input id="a3" inputmode="numeric" placeholder="¿Cuál es el número?">
+<button onclick="check(3,14)">Descifrar</button><button class="secondary" onclick="hint(3)">Pista</button>
+<div id="f3" class="feedback"></div><div id="h3" class="hint hidden">Suma 4 puntos y 2 barras de 5.</div>
+</section>
+<section class="card hidden" id="final">
+<h2>🔐 Código final</h2><p>Usa el <strong>último dígito</strong> de cada respuesta:</p><div class="symbols">Babilonia → Egipto → Maya</div>
+<input id="code" inputmode="numeric" maxlength="3" placeholder="Código de 3 dígitos">
+<button onclick="finish()">Abrir portal</button><div id="ff" class="feedback"></div>
+</section>
+<section class="card hidden" id="win">
+<h2>🏆 ¡Expedición completada!</h2><p>Has reconstruido el código <strong>254</strong> y abierto el portal.</p>
+<p>Tu resultado demuestra que puedes interpretar diferentes formas de representar cantidades y convertirlas a lenguaje matemático.</p>
+<button onclick="location.reload()">Repetir expedición</button>
+</section>
+<footer>TEBAEV Rincón de Barrabás · CCT 30ETH1095G · Actividad didáctica</footer>
+</div>
+<script>
+let solved=0;
+function show(id){document.querySelectorAll('section.card').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
+function start(){show('ch1');update()}
+function update(){document.getElementById('counter').textContent=solved+' / 3';document.getElementById('bar').style.width=(solved/3*100)+'%'}
+function hint(n){document.getElementById('h'+n).classList.remove('hidden')}
+function check(n,answer){
+ const v=document.getElementById('a'+n).value.trim(), f=document.getElementById('f'+n);
+ f.style.display='block';
+ if(v===String(answer)){f.className='feedback ok';f.textContent='✓ Correcto. Has descifrado esta cámara.'; if(!document.getElementById('ch'+n).dataset.done){document.getElementById('ch'+n).dataset.done='1';solved++;update();setTimeout(()=>show(n<3?'ch'+(n+1):'final'),450)}}
+ else {f.className='feedback bad';f.textContent='Todavía no. Revisa el valor de cada símbolo y vuelve a intentarlo.'}
+}
+function finish(){
+ const f=document.getElementById('ff');
+ if(document.getElementById('code').value.trim()==='254'){f.className='feedback ok';f.style.display='block';f.textContent='✓ Código correcto. ¡Portal abierto!';setTimeout(()=>show('win'),500)}
+ else{f.className='feedback bad';f.style.display='block';f.textContent='Código incorrecto. Usa los últimos dígitos de 42, 3205 y 14.'}
+}
+</script>
+</body>
+</html>
