@@ -27,7 +27,7 @@ ul{line-height:1.8}
 <div class="wrap">
 <div class="card"><div class="meta"><span>Progreso de la expedición</span><strong id="counter">0 / 3</strong></div><div class="progress"><div class="bar" id="bar"></div></div></div>
 <section class="card" id="intro">
-<h2>Bienvenido, explorador</h2>
+<h2>Bienvenido, explorador</h2><div class="card" style="margin:12px 0;padding:16px;background:#faf7ef"><label><strong>Nombre completo</strong></label><input id="studentName" placeholder="Escribe tu nombre completo"><label style="display:block;margin-top:10px"><strong>Grupo</strong></label><input id="studentGroup" placeholder="Ej. 1°A"></div>
 <p>Has encontrado un antiguo mecanismo que solo puede abrirse resolviendo tres códigos matemáticos. Viajarás por Babilonia, Egipto y el mundo Maya.</p>
 <ul><li>Lee con atención cada representación.</li><li>Escribe el resultado numérico.</li><li>Si te equivocas, recibirás una pista para aprender del error.</li></ul>
 <button onclick="start()">Comenzar expedición 🚀</button>
@@ -68,22 +68,22 @@ ul{line-height:1.8}
 <footer>TEBAEV Rincón de Barrabás · CCT 30ETH1095G · Actividad didáctica</footer>
 </div>
 <script>
-let solved=0;
+let solved=0, errors=0, hints=0, startTime=0, elapsed='';
 function show(id){document.querySelectorAll('section.card').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');}
-function start(){show('ch1');update()}
+function start(){const n=document.getElementById('studentName').value.trim(),g=document.getElementById('studentGroup').value.trim();if(!n||!g){alert('Escribe tu nombre completo y grupo antes de comenzar.');return}startTime=Date.now();show('ch1');update()}
 function update(){document.getElementById('counter').textContent=solved+' / 3';document.getElementById('bar').style.width=(solved/3*100)+'%'}
-function hint(n){document.getElementById('h'+n).classList.remove('hidden')}
+function hint(n){hints++;document.getElementById('h'+n).classList.remove('hidden')}
 function check(n,answer){
  const v=document.getElementById('a'+n).value.trim(), f=document.getElementById('f'+n);
  f.style.display='block';
  if(v===String(answer)){f.className='feedback ok';f.textContent='✓ Correcto. Has descifrado esta cámara.'; if(!document.getElementById('ch'+n).dataset.done){document.getElementById('ch'+n).dataset.done='1';solved++;update();setTimeout(()=>show(n<3?'ch'+(n+1):'final'),450)}}
- else {f.className='feedback bad';f.textContent='Todavía no. Revisa el valor de cada símbolo y vuelve a intentarlo.'}
+ else {errors++;f.className='feedback bad';f.textContent='Todavía no. Revisa el valor de cada símbolo y vuelve a intentarlo.'}
 }
 function finish(){
  const f=document.getElementById('ff');
  if(document.getElementById('code').value.trim()==='254'){f.className='feedback ok';f.style.display='block';f.textContent='✓ Código correcto. ¡Portal abierto!';setTimeout(()=>show('win'),500)}
- else{f.className='feedback bad';f.style.display='block';f.textContent='Código incorrecto. Usa los últimos dígitos de 42, 3205 y 14.'}
+ else{errors++;f.className='feedback bad';f.style.display='block';f.textContent='Código incorrecto. Usa los últimos dígitos de 42, 3205 y 14.'}
 }
-</script>
+function sendResult(){const name=document.getElementById('studentName').value.trim(),group=document.getElementById('studentGroup').value.trim();const secs=Math.floor((Date.now()-startTime)/1000);elapsed=String(Math.floor(secs/60)).padStart(2,'0')+':'+String(secs%60).padStart(2,'0');const score=Math.max(0,100-(errors*5)-(hints*3));document.getElementById('scoreBox').textContent=score+' / 100';document.getElementById('resultDetails').textContent='Alumno: '+name+' · Grupo: '+group+' · Cámaras: '+solved+'/3 · Errores: '+errors+' · Pistas: '+hints+' · Tiempo: '+elapsed;window.open('https://docs.google.com/forms/d/e/1FAIpQLSdgmHXCTjRgWCTnxmLgVIkXNhdl--kZ5do4KoiUcARNP8htWA/viewform','_blank')}\n</script>
 </body>
 </html>
